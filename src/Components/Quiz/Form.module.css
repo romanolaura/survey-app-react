@@ -1,0 +1,86 @@
+.form {
+  padding-left: 1em;
+  padding-top: 1.5em;
+  height: 20.5em;
+  position: relative;
+}
+
+.form p {
+  margin-top: 0;
+  font-size: 1.1em;
+}
+
+.select-group {
+  width: 100%;
+  line-height: 1.6;
+}
+.select-group label {
+  display: inline-block;
+  width: fit-content;
+  margin-left: 0.4em;
+}
+
+.select-group input {
+  display: inline-block;
+}
+
+.select-group input[type="text"] {
+  margin-top: 1em;
+  width: 80%;
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 10px;
+  border-color: gray;
+  border-style: solid;
+}
+
+.select-group .text-input-label {
+  font-size: 1.1em;
+}
+.select-group input[type="text"]:focus {
+  border-color: gray;
+}
+
+.actions {
+  width: 50em;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.295);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  bottom: 0;
+  left: 0;
+}
+
+.action-back {
+  float: left;
+}
+
+.action-next {
+  margin-left: auto;
+  float: right;
+}
+
+.disabled-button button {
+  margin-left: auto;
+  float: right;
+  background-color: rgb(110, 110, 110);/* rgb(94, 92, 92);*/
+}
+
+.disabled-button button:hover {
+  margin-left: auto;
+  float: right;
+  cursor: not-allowed;
+  background-color: rgb(63, 62, 62);
+}
+
+.action-submit button {
+  margin-left: auto;
+  float: right;
+  background-color: #3a7d44;
+}
+
+.action-submit button:hover {
+  margin-left: auto;
+  float: right;
+  background-color: #254d32;
+}

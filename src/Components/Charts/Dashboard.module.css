@@ -1,0 +1,26 @@
+.dashboard {
+    top:-20vh;
+    padding: 3em;
+    display: block;
+     width: fit-content;
+}
+.dashboard h3 {
+    justify-self: stretch;
+    flex-basis: 100%;
+}
+.doughnut {
+    width: 25%;
+    display: inline-block;
+    padding: 0 3em 3em 3em;
+}
+
+.bar {
+    margin: auto;
+    width: 50%;
+}
+
+.pie {
+    margin: auto;
+    width: 25%;
+    justify-self: center
+}

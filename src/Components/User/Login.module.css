@@ -1,0 +1,40 @@
+.login {
+  padding: 2em 3em;
+}
+
+.login label {
+  display: block;
+}
+
+.login input {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+  width: 15em;
+  padding: 0.5em;
+  border-radius: 10px;
+  border-color: gray;
+  border-style: solid;
+}
+
+.buttons {
+    text-align: right;
+    display: block;
+  }
+
+.link {
+  text-align: right;
+  width: 100%;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  color: rgb(87, 85, 85);
+  text-decoration: underline;
+  cursor: pointer;
+  font-style: italic;
+}
+
+.invalid-msg {
+  font-size: small;
+  color: red;
+}

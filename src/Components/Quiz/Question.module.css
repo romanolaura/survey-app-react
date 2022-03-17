@@ -1,0 +1,30 @@
+.question-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.survey-question {
+    /* display: inline-block; */
+    width: 20em;
+    text-align: left;
+    height: 22em;
+    align-self: stretch;
+    /* justify-self: flex-start;
+    align-self: flex-start; */
+    /* display: fixed; */
+    /* height: 10em; */
+    /* top: 0 */
+}
+
+.image {
+    width: 30em;
+    text-align: right;
+    margin-left: 0;
+    height: 22em;
+    /* justify-self: flex-start;
+    align-self: flex-end; */
+    /* display: inline-block; */
+    /* padding-right: 0 !important; */
+}
+

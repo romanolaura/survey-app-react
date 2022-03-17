@@ -1,0 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&&display=swap');
+
+.transition {
+    padding: 5em;
+    text-align: center;
+}
+
+.transition h1 {
+    margin-top: 0;
+    font-family: 'Concert One', cursive;
+}
+
+.transition button {
+    margin-left: 1em;
+    margin-right: 1em;
+}
