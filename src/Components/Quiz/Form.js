@@ -11,7 +11,7 @@ const SurveyQuestion = (props) => {
     userId: JSON.parse(localStorage.currentUser).id,
   }); // Collects all user answers to the quiz to be submitted to de DB
   const [buttonBlocked, setButtonBlocked] = useState(true);
-
+  const [conditionalIdx, setConditionalIdx] = useState({ back: 0, next: 0 });
   const questionsCtx = useContext(QuestionsCtx);
   const questions = questionsCtx.questions;
 
@@ -45,6 +45,17 @@ const SurveyQuestion = (props) => {
       setQuizAnswers((prevQuizAnswers) => {
         return { ...prevQuizAnswers, [e.target.name]: e.target.value };
       });
+      if (questionIndex === 7) {
+        if (e.target.name === "montreal") {
+          setConditionalIdx({ back: 10, next: 8 });
+        } else if (e.target.name === "trois-Rivieres") {
+          setConditionalIdx({ back: 13, next: 11 });
+        } else if (e.target.name === "quebec-city") {
+          setConditionalIdx({ back: 16, next: 14 });
+        } else if (e.target.name === "st-johns") {
+          setConditionalIdx({ back: 19, next: 17 });
+        }
+      }
     }
     console.log(e.target.value.trim());
     if (e.target.type === "checkbox" || e.target.type === "radio") {
@@ -59,26 +70,61 @@ const SurveyQuestion = (props) => {
     e.preventDefault();
     setButtonBlocked(true);
     setQuestionIndex((prevIndex) => {
-      return ++prevIndex;
+      if (prevIndex === 7) {
+        return conditionalIdx.next;
+      } else if (
+        prevIndex === 10 ||
+        prevIndex === 13 ||
+        prevIndex === 16 ||
+        prevIndex === 19
+      ) {
+        return 20;
+      } else {
+        return ++prevIndex;
+      }
     });
-    console.log(quizAnswers[questions[questionIndex].name]);
   };
 
   const goBackHandler = (e) => {
     e.preventDefault();
     setButtonBlocked(true);
+    setQuizAnswers((prevAns) => {
+      let key = _.keys(prevAns).pop();
+      let temp = prevAns;
+      delete temp[key];
+      return temp;
+    });
     setQuestionIndex((prevIndex) => {
-      return --prevIndex;
+      if (prevIndex === 20) {
+        return conditionalIdx.back;
+      } else if (
+        prevIndex === 8 ||
+        prevIndex === 11 ||
+        prevIndex === 14 ||
+        prevIndex === 17
+      ) {
+        return 7;
+      } else {
+        return --prevIndex;
+      }
+    });
+    setQuizAnswers((prevAns) => {
+      let key = _.keys(prevAns).pop();
+      let temp = prevAns;
+      delete temp[key];
+      return temp;
     });
   };
 
   //Submits answers to the database
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post("https://survey-app-laura.herokuapp.com/create", quizAnswers).then((res) => {
-      console.log(res.data);
-      props.onEnd();
-    });
+    axios
+      .post("https://survey-app-laura.herokuapp.com/create", quizAnswers)
+      .then((res) => {
+        console.log(res.data);
+        props.onEnd();
+      });
   };
 
   const firstQuestion = questionIndex === 0; // To hide "Back" button on first question

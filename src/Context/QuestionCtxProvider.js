@@ -7,7 +7,7 @@ const QuestionsCtxProvider = (props) => {
 
   const defaultCtx = {
     questions: [
-      {
+      { //0
         type: "checkbox",
         question: "Canada's official language(s) (select all that apply)",
         name: "officialLanguage",
@@ -20,10 +20,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/languages.jpg",
         rightAns: ["English", "French"],
         category: "fact",
-        next:1,
-        back:1,
       },
-      {
+      { //1
         type: "radio",
         question: "True or false: Canada is the world's third largest country",
         name: "thirdLargestCountry",
@@ -34,10 +32,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/world.webp",
         rightAns: "False",
         category: "fact",
-        next:1,
-        back:1,
       },
-      {
+      { //2
         type: "radio",
         question:
           "Both men's and women's Canadian hockey teams won gold in Salt Lake City.",
@@ -49,10 +45,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/world.webp",
         rightAns: "True",
         category: "sports",
-        next:1,
-        back:1,
       },
-      {
+      { //3
         type: "radio",
         question: "Who were the first to colonize Canada",
         name: "canadaColonizers",
@@ -65,10 +59,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/vikings.jpg",
         rightAns: "The Vikings",
         category: "history",
-        next:1,
-        back:1,
       },
-      {
+      { //4
         type: "text",
         question: "Canada's national animal",
         name: "nationalAnimal",
@@ -78,10 +70,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/animals.jpg",
         rightAns: "beaver",
         category: "fact",
-        next:1,
-        back:1,
       },
-      {
+      { //5
         type: "radio",
         question: "The coldest ever recorded temperature in Canada is",
         name: "coldestTemperature",
@@ -94,10 +84,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/temperature.jpg",
         rightAns: "-63°C",
         category: "history",
-        next:1,
-        back:1,
       },
-      {
+      { //6
         type: "radio",
         question:
           "True or false: Select true or false: Hockey is the national sport of Canada",
@@ -109,28 +97,24 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "False",
         category: "sports",
-        next:1,
-        back:1,
       },
       // This question triggers the changing questions
-      {
+      { //7
         type: "radio",
         question: "What is the Oldest City in Canada",
         name: "oldestCity",
         options: [
-          { id: "montreal", value: "St. John's", children: null },
-          { id: "trois-Rivieres", value: "Quebec City", children: null },
-          { id: "quebec-city", value: "Trois-Rivières", children: null },
+          { id: "montreal", value: "Montreal", children: null },
+          { id: "trois-Rivieres", value: "Trois-Rivières", children: null },
+          { id: "quebec-city", value: "Quebec City", children: null },
           { id: "st-johns", value: "St. John's", children: null },
         ],
         url: "/images/hockey2.jpg",
         rightAns: "St. John's",
         category: "history",
-        next:1,
-        back:1,
       },
       //If user chooses Montreal
-      {
+      { //8
         type: "radio",
         question: "Montreal was incorporated as a city in 1832",
         name: "incorporatedMontreal",
@@ -141,10 +125,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "True",
         category: "history",
-        next:1,
-        back:1,
       },
-      {
+      { //9
         type: "radio",
         question: "Which Summer Olimpic Games were hosted in Montreal",
         name: "olimpicsMontreal",
@@ -157,10 +139,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "1976",
         category: "history",
-        next:1,
-        back:1,
       },
-      {
+      { //10
         type: "radio",
         question:
           "In Formula 1, the Canadian Grand Prix has been regularly held at which circuit in Montreal since 1978",
@@ -182,11 +162,9 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "Circuit Gilles Villeneuve",
         category: "sports",
-        next:9,
-        back:1,
       },
       //If user chooses Quebec City
-      {
+      { //11
         type: "radio",
         question: "Quebec City was founded in 1606",
         name: "foundingQuebecCity",
@@ -197,10 +175,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "False",
         category: "history",
-        next:3,
-        back:1,
       },
-      {
+      { //12 
         type: "radio",
         question:
           "Quebec City is the only remaining _________ city in North America ",
@@ -214,10 +190,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "Walled",
         category: "history",
-        next:1,
-        back:1,
       },
-      {
+      { //13
         type: "radio",
         question:
           "Gaetan Boucher, from Quebec City, was an Olympic gold medallist in which sport?",
@@ -231,11 +205,9 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "Speed skating",
         category: "sports",
-        next:6,
-        back:1,
       },
       //If user chooses Trois-Rivières
-      {
+      { //14
         type: "radio",
         question: "Trois-Rivières was founded in 1634",
         name: "foundingRivieres",
@@ -246,10 +218,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "True",
         category: "history",
-        next:1,
-        back:6,
       },
-      {
+      { //15
         type: "radio",
         question:
           "Several surrounding communities were merged into Trois-Rivières in",
@@ -263,10 +233,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "2002",
         category: "history",
-        next:1,
-        back:1,
       },
-      {
+      { //16
         type: "radio",
         question:
           "Name of longest-running street race in North America, hosted in Trois-Rivières",
@@ -292,11 +260,9 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "Grand Prix de Trois-Rivières",
         category: "sports",
-        next:3,
-        back:1,
       },
       //If user chooses St. John's
-      {
+      { //17
         type: "radio",
         question: "St. John's became incorporated as a city in 1920",
         name: "incorporatedJohns",
@@ -307,10 +273,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "False",
         category: "history",
-        next:1,
-        back:9,
       },
-      {
+      { //18
         type: "checkbox",
         question:
           "St. John's was ravaged by three fires in (select all that apply)",
@@ -324,10 +288,8 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: ["1816", "1846", "1892"],
         category: "history",
-        next:1,
-        back:1,
       },
-      {
+      { //19
         type: "radio",
         question: "St. John's has a local professional NHL team",
         name: "nhlTeamJohn",
@@ -338,11 +300,9 @@ const QuestionsCtxProvider = (props) => {
         url: "/images/hockey2.jpg",
         rightAns: "False",
         category: "sports",
-        next:1,
-        back:1,
       },
       // End of conditional questions
-      {
+      { //20
         type: "radio",
         question: "What former NHL player is known as the “Rocket”",
         name: "cityOfChampions",
@@ -356,7 +316,7 @@ const QuestionsCtxProvider = (props) => {
         rightAns: "Maurice Richard",
         category: "sports",
       },
-      {
+      { //21
         type: "radio",
         question: "What animal is in the 1CAD coin",
         name: "loonieAnimal",
@@ -370,7 +330,7 @@ const QuestionsCtxProvider = (props) => {
         rightAns: "Loon",
         category: "fact",
       },
-      {
+      { //22
         type: "checkbox",
         question: "Cities in Canada (select all that apply)",
         name: "citiesCanada",
@@ -384,7 +344,7 @@ const QuestionsCtxProvider = (props) => {
         rightAns: ["Nelson", "Churchill"],
         category: "fact",
       },
-      {
+      { //23
         type: "radio",
         question: "What Canadian based NBA Team moved to Memphis?",
         name: "nbaMemphis",
