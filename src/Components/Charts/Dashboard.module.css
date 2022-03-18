@@ -2,11 +2,14 @@
     top:-20vh;
     padding: 3em;
     display: block;
-     width: fit-content;
+     width: 150vh;
+     margin-top: -15vh;
 }
 .dashboard h3 {
-    justify-self: stretch;
-    flex-basis: 100%;
+    display: block;
+    /* justify-self: stretch;
+    flex-basis: 100%; */
+    cursor: pointer;
 }
 .doughnut {
     width: 25%;
@@ -20,7 +23,8 @@
 }
 
 .pie {
-    margin: auto;
-    width: 25%;
-    justify-self: center
+    margin-left: 10%;
+    width: 30%;
+    padding: 0 2em 3em 2em;
+    display: inline-block;
 }

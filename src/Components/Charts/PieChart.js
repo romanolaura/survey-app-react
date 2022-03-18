@@ -17,23 +17,32 @@ const PieChart = (props) => {
     ],
   };
   const options = {
-      plugins: {
-        tooltip: {
-            callbacks: {
-              label: function(context) {
-                let label = context.label || "";
-                if (context.label) {
-                  label += ": ";
-                }
-                if(context.parsed) {
-                  label += context.formattedValue+'%';
-                }
-                return label
-              }
+    plugins: {
+      title: {
+        display: true,
+        text: props.title,
+        font: { size: "30em" },
+      },
+      subtitle: {
+        display: true,
+        text: props.subtitle,
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            let label = context.label || "";
+            if (context.label) {
+              label += ": ";
             }
-          }
-      }
-  }
+            if (context.parsed) {
+              label += context.formattedValue + "%";
+            }
+            return label;
+          },
+        },
+      },
+    },
+  };
   return <Pie data={data} options={options} />;
 };
 

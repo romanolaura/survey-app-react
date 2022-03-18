@@ -7,21 +7,29 @@ import Card from "../../UI/Card";
 import classes from "./Dashboard.module.css";
 import BarChart from "./BarChart";
 import PieChart from "./PieChart";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 const Dashboard = () => {
   const [dbData, setDbData] = useState(null);
+  const [showGeneralStatistics, setShowGeneralStatistics] = useState(false);
   const questionsCtx = useContext(QuestionsCtx);
   const questions = questionsCtx.questions;
   let data = {};
 
   const getdBData = useCallback(() => {
-    axios.get("https://survey-app-laura.herokuapp.com/getAllData").then((response) => {
-      setDbData(response.data);
-    });
+    axios
+      .get("https://survey-app-laura.herokuapp.com/getAllData")
+      .then((response) => {
+        setDbData(response.data);
+      });
   }, []);
 
   const valuePercentage = (value, total) => {
     return ((value / total) * 100).toFixed(2);
+  };
+
+  const showGeneralStatisticsHandler = () => {
+    setShowGeneralStatistics((prevValue) => !prevValue);
   };
 
   useEffect(() => {
@@ -73,7 +81,6 @@ const Dashboard = () => {
           break;
       }
     });
-    console.log(dbData);
     //GENERAL STATISTICS
     // Goes through the DB data to calculate statistics and stores them in the default object
     _.forEach(dbData, (quizEntry) => {
@@ -146,7 +153,7 @@ const Dashboard = () => {
     _.forEach(userData, (entry, key) => {
       if (data[key]) {
         userRightOrWrong.total += 1;
-        if (data[key].rightAns === entry) {
+        if ((data[key].type === 'radio' && data[key].rightAns === entry) || (data[key].type === 'checkbox' && _.isEqual(data[key].rightAns.sort(), entry.sort())) || (data[key].type === 'text' && data[key].rightAns === entry.trim().toLowerCase())) {
           userRightOrWrong.userRight += 1;
           switch (data[key].category) {
             case "history":
@@ -166,12 +173,12 @@ const Dashboard = () => {
         }
       }
     });
-
-    console.log(userRightOrWrong);
     //Charts
     const pieChartCorrectVsIncorrect = (
       <div className={classes.pie}>
         <PieChart
+          title="Quiz Results"
+          subtitle="Correct vs Incorrect Answers Ratio"
           labels={["Correct", "Incorrect"]}
           data={[
             valuePercentage(userRightOrWrong.userRight, userRightOrWrong.total),
@@ -190,10 +197,21 @@ const Dashboard = () => {
       <div className={classes.pie}>
         <PieChart
           labels={["History Junkie", "Fact Chaser", "Sports Fan"]}
+          subtitle="Categories"
+          title="Knowledge Distribution"
           data={[
-            valuePercentage(userRightOrWrong.historian, userRightOrWrong.total),
-            valuePercentage(userRightOrWrong.factChaser, userRightOrWrong.total),
-            valuePercentage(userRightOrWrong.sportsFan, userRightOrWrong.total),
+            valuePercentage(
+              userRightOrWrong.historian,
+              userRightOrWrong.userRight
+            ),
+            valuePercentage(
+              userRightOrWrong.factChaser,
+              userRightOrWrong.userRight
+            ),
+            valuePercentage(
+              userRightOrWrong.sportsFan,
+              userRightOrWrong.userRight
+            ),
           ]}
           backgroundColors={[
             "rgba(75, 192, 192, 0.2)",
@@ -212,6 +230,7 @@ const Dashboard = () => {
     const barChart = (
       <div className={classes.bar}>
         <BarChart
+          title="Overview"
           labels={_.map(data, "title")}
           correctAnswers={_.map(data, "correct")}
           incorrectAnswers={_.map(data, "incorrect")}
@@ -237,14 +256,19 @@ const Dashboard = () => {
         </div>
       );
     });
-
+    // console.log(_.map(data,'rightAns'));
+    const arrowIcon = showGeneralStatistics ? <FaAngleUp /> : <FaAngleDown />;
     content = (
       <div className={classes.dashboard}>
+        <h2>User Statistics</h2>
         {pieChartCorrectVsIncorrect}
         {pieChartCategories}
+        <h2>General Statistics</h2>
         {barChart}
-        <h3>Answers Distribution</h3>
-        {doughnutCharts}
+        <h3 onClick={showGeneralStatisticsHandler}>
+          General answers distribution {arrowIcon}
+        </h3>
+        {showGeneralStatistics && doughnutCharts}
       </div>
     );
   }

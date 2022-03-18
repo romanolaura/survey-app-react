@@ -15,7 +15,7 @@ const Question = (props) => {
           <SurveyQuestion onEnd={props.onEnd} />
         </div>
         <div className={classes.image}>
-          <Image url={questionsCtx.imageUrl} />
+          <Image url={questionsCtx.imageUrl} alt={questionsCtx.imgAlt} />
         </div>
       </div>
     </Card>

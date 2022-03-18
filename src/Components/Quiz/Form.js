@@ -46,18 +46,19 @@ const SurveyQuestion = (props) => {
         return { ...prevQuizAnswers, [e.target.name]: e.target.value };
       });
       if (questionIndex === 7) {
-        if (e.target.name === "montreal") {
-          setConditionalIdx({ back: 10, next: 8 });
-        } else if (e.target.name === "trois-Rivieres") {
-          setConditionalIdx({ back: 13, next: 11 });
-        } else if (e.target.name === "quebec-city") {
-          setConditionalIdx({ back: 16, next: 14 });
-        } else if (e.target.name === "st-johns") {
-          setConditionalIdx({ back: 19, next: 17 });
+        if (e.target.checked) {
+          if (e.target.value.trim() === "Montreal") {
+            setConditionalIdx({ back: 10, next: 8 });
+          } else if (e.target.value.trim() === "Quebec City") {
+            setConditionalIdx({ back: 13, next: 11 });
+          } else if (e.target.value.trim() === "Trois-Rivières") {
+            setConditionalIdx({ back: 16, next: 14 });
+          } else if (e.target.value.trim() === "St. John's") {
+            setConditionalIdx({ back: 19, next: 17 });
+          }
         }
       }
     }
-    console.log(e.target.value.trim());
     if (e.target.type === "checkbox" || e.target.type === "radio") {
       setButtonBlocked(false);
     } else if (e.target.type === "text") {
@@ -65,7 +66,6 @@ const SurveyQuestion = (props) => {
       else setButtonBlocked(true);
     }
   };
-
   const goNextHandler = (e) => {
     e.preventDefault();
     setButtonBlocked(true);
@@ -102,7 +102,7 @@ const SurveyQuestion = (props) => {
         prevIndex === 11 ||
         prevIndex === 14 ||
         prevIndex === 17
-      ) {
+        ) {
         return 7;
       } else {
         return --prevIndex;
@@ -121,8 +121,7 @@ const SurveyQuestion = (props) => {
     e.preventDefault();
     axios
       .post("https://survey-app-laura.herokuapp.com/create", quizAnswers)
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
         props.onEnd();
       });
   };

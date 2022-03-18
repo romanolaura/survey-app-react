@@ -27,10 +27,6 @@ const Transition = (props) => {
     setShowDashboard(true);
   };
 
-  const reviewQuizHandler = () => {
-
-  }
-
   if (props.welcome) {
     content = (
       <Card>

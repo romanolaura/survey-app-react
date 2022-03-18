@@ -23,6 +23,11 @@ const BarChart = (props) => {
   const options = {
     responsive: true,
     plugins: {
+      title: {
+        display: true,
+        text: props.title,
+        font: { size: "30em" },
+      },
       legend: {
         position: "top",
       }
@@ -40,12 +45,12 @@ const BarChart = (props) => {
     labels,
     datasets: [
       {
-        label: "Correct Answers",
+        label: "Correct Submissions",
         data: props.correctAnswers,
         backgroundColor: "rgba(75, 192, 192, 1)",
       },
       {
-        label: "Incorrect Answers",
+        label: "Incorrect Submissions",
         data: props.incorrectAnswers,
         backgroundColor: "rgba(255, 99, 132, 1)",
       },

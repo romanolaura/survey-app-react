@@ -11,13 +11,11 @@ const Login = () => {
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const [invalidAttempt, setInvalidAttempt] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
 
   const userCtx = useContext(QuestionsCtx);
 
   useEffect(() => {
     setInvalidAttempt(false);
-    // setIsLogged(localStorage.currentUser);
     userCtx.setUserIsLoggedIn();
   }, [setInvalidAttempt, userCtx]);
 
